@@ -3,17 +3,7 @@ import Post from './Post/Post';
 import s from './MyPosts.module.css';
 
 export default function MyPosts(props) {
-  // let posts = [
-  //   {
-  //     message:
-  //       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates provident esse, aperiam unde nulla cumque maiores doloribus libero saepe repellendus est, quam tempore quaerat sunt, qui laboriosam dicta ad ab.',
-  //   },
-  //   { message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, repellat!' },
-  //   {
-  //     message:
-  //       '!!! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, repellat! !!! Lorem ipsum dolor sit, amet consectetur',
-  //   },
-  // ];
+  
   let postsElements = props.posts.map(post => <Post message={post.message} />)
   return (
     <div className={s.postsBlock}>
