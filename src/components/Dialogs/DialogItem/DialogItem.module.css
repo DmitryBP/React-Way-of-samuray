@@ -1,0 +1,14 @@
+.contact {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.contact .active {
+  color: red;
+}
+
+.dialogs .active {
+  color: gold;
+}
