@@ -4,4 +4,16 @@
 
 .messag {
   padding: 10px;
+  margin: 10px;
+  background-color: #1cbffb;
+  border: 1px solid #1791c0;
+  border-radius: 5px;
+}
+
+.messagL {
+  text-align: left;
+}
+
+.messagR {
+  text-align: right;
 }

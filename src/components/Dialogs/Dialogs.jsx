@@ -5,17 +5,10 @@ import Message from './Message/Message';
 
 export default function Dialogs(props) {
 
-
-  // let dialogsElement = props.contactData.map((dialog) => (
-  //   <DialogItem name={dialog.name} id={dialog.id} />
-  // ));
-  // let messagesElement = props.messageData.map((messag) => <Message messag={messag.message} />);
-
-
   let dialogsElement = props.state.dialogs.map((dialog) => (
-    <DialogItem name={dialog.name} id={dialog.id} />
+    <DialogItem name={dialog.name} id={dialog.id} ava={dialog.ava}/>
   ));
-  let messagesElement = props.state.messages.map((messag) => <Message messag={messag.message} />);
+  let messagesElement = props.state.messages.map((messag) => <Message messag={messag.message} speacker = {messag.speacker}/>);
 
   return (
     <div className={s.dialogs}>

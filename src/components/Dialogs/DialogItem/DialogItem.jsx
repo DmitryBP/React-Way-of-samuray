@@ -7,7 +7,8 @@ export default function DialogItem(props) {
   return (
     <div>
       <NavLink to={path + props.id} className={s.contact + ' ' + s.active}>
-        {props.name}
+        <img src={props.ava} alt='BredPit' />
+        <p className={s.name}>{props.name}</p>
       </NavLink>
     </div>
   );
