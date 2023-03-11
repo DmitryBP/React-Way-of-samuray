@@ -2,7 +2,7 @@ import { renderEntireTree } from "../render";
 
 // eslint-disable-next-line no-unused-vars
 export let state = {
-  messagesPage: {
+  profilePage: {
     posts: [
       {
         message:
@@ -14,6 +14,7 @@ export let state = {
           '!!! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, repellat! !!! Lorem ipsum dolor sit, amet consectetur',
       },
     ],
+    newPostText: "it-camasutra"
   },
   dialogsPage: {
     dialogs: [
@@ -60,11 +61,17 @@ export let state = {
   alert1: () => alert('dtdt'),
 };
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
   let newPost = {
-    message: postMessage,
+    message: state.profilePage.newPostText,
   };
 
-  state.messagesPage.posts.push(newPost)
+  state.profilePage.posts.push(newPost)
+  state.profilePage.newPostText = ''
   renderEntireTree(state)
 };
+
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText
+  renderEntireTree(state);
+}
