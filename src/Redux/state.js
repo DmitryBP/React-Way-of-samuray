@@ -1,6 +1,4 @@
-import { renderEntireTree } from "../render";
-
-// eslint-disable-next-line no-unused-vars
+let renderEntireTree = () => {}
 export let state = {
   profilePage: {
     posts: [
@@ -61,7 +59,7 @@ export let state = {
   alert1: () => alert('dtdt'),
 };
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     message: state.profilePage.newPostText,
   };
@@ -71,7 +69,11 @@ export let addPost = () => {
   renderEntireTree(state)
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText
   renderEntireTree(state);
+}
+
+export const subscriber = (observer) => {
+  renderEntireTree = observer
 }
