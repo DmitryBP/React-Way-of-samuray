@@ -11,8 +11,7 @@ export default function Profile(props) {
         posts={props.profilePage.posts}
         newPostText={props.profilePage.newPostText}
         alert1={props.alert1}
-        addPost={props.addPost}
-        updateNewPostText={props.updateNewPostText}
+        dispatch={props.dispatch}
       />
     </div>
   );

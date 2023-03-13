@@ -22,8 +22,7 @@ function App(props) {
               <Profile
                 profilePage={props.state.profilePage}
                 alert1={props.state}
-                addPost={props.addPost}
-                updateNewPostText={props.updateNewPostText}
+                dispatch={props.dispatch}
               />
             }
           />

@@ -1,5 +1,3 @@
-
-
 let store = {
   _state: {
     profilePage: {
@@ -66,24 +64,23 @@ let store = {
     return this._state;
   },
 
-  addPost() {
-    debugger
-    let newPost = {
-      message: this._state.profilePage.newPostText,
-    };
-
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-
   subscriber(observer) {
     this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        message: this._state.profilePage.newPostText,
+      };
+
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UP-DATE-NEW-POST') {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    }
   },
 };
 
