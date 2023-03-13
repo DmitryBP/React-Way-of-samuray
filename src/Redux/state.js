@@ -67,6 +67,7 @@ let store = {
   },
 
   addPost() {
+    debugger
     let newPost = {
       message: this._state.profilePage.newPostText,
     };
