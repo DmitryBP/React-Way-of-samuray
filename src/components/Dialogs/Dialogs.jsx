@@ -14,6 +14,7 @@ export default function Dialogs(props) {
     <div className={s.dialogs}>
       <div className={s.dialogItems}>{dialogsElement}</div>
       <div className={s.messages}>{messagesElement}</div>
+      <div className={s.enterMessageBox}>Test</div>
     </div>
   );
 }

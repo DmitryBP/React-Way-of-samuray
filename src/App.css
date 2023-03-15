@@ -7,10 +7,12 @@
     'n c';
   grid-template-rows: 120px 1fr;
   grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
+  grid-gap: 10px;
 }
 
 .app-wrapper-content {
   grid-area: c;
   background-color: rgb(65, 208, 168);
+  border-radius: 5px;
+  
 }
