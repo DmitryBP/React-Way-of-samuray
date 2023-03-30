@@ -20,7 +20,17 @@
   background-color: #1cbffb;
   border: 1px solid #1791c0;
   border-radius: 5px;
+}
+
+.messageEnterBox {
+  padding: 10px;
+  display: block;
   
+}
+
+.textArea {
+  display: block;
+  margin-bottom: 10px;
 }
 
 

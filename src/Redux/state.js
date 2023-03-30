@@ -59,7 +59,7 @@ let store = {
         { id: 4, message: 'yas', speacker: 'Right' },
       ],
     },
-    alert1: () => alert('dtdt'),
+    // alert1: () => alert('dtdt'),
   },
   _callSubscriber() {},
 
@@ -86,6 +86,14 @@ let store = {
     }
   },
 };
+
+export const addPost = (postMessage) => {
+  let newPost = {
+    id: 5,
+    message: postMessage
+  }
+  store._state.dialogsPage.messages.push(newPost)
+}
 
 export const addPostActionCreator = () => {
   return {

@@ -1,5 +1,5 @@
 
-import store from './Redux/state';
+import store, { addPost } from './Redux/state';
 import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 let renderEntireTree = (state) => {
   root.render(
     <BrowserRouter>
-      <App state={state} dispatch = {store.dispatch.bind(store)}/>
+      <App state={state} addPost={addPost} dispatch = {store.dispatch.bind(store)}/>
     </BrowserRouter>
   );
 }
-
+// addPost('test message!')
 renderEntireTree(store._state);
 
 store.subscriber(renderEntireTree)
