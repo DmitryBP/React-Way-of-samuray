@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+.appWrapper {
+  width: 1024px;
+  margin: 0 auto;
+  padding: 10px;
+  color: rebeccapurple;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    'h h'
+    'n c';
+  gap: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  grid-area: h;
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: auto;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.logo img {
+  margin:auto;
+  width: 60px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav {
+  grid-area: n;
+  border: 1px solid rgb(237, 235, 235);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.content {
+  grid-area: c;
+  border-radius: 5px;
+}
+
+.mainBaner {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  background-image: url('https://dev.tecci.fi/tecci_2/wp-content/uploads/2020/09/angular-react-vue-web-development.jpg');
+  background-position: center;
+  background-size: cover;
 }
