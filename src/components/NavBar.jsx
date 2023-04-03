@@ -1,8 +1,9 @@
 import React from 'react'
+import s from './NavBar.module.css'
 
 export default function NavBar() {
   return (
-    <nav className="nav">
+    <nav className={s.Nav}>
         <div>
           <a href="./#">Profile</a>
         </div>

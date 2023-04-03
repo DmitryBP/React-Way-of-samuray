@@ -1,0 +1,17 @@
+.header {
+  grid-area: h;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  
+}
+
+.logo img {
+  margin:auto;
+  width: 60px;
+  padding-bottom: 10px;
+}
