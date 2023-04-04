@@ -1,0 +1,13 @@
+.item {
+  
+}
+
+.item img {
+  padding: 10px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.item span {
+  text-align: right;
+}
