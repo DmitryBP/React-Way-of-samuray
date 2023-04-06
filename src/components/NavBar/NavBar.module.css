@@ -1,6 +1,39 @@
 .nav {
   grid-area: n;
-  border: 1px solid rgb(237, 235, 235);
+  border: 1px solid rgb(248, 244, 244);
   border-radius: 5px;
   padding: 10px;
+  position: relative;
+  
+}
+
+.nav::before {    
+  content: "";
+  /* background-image: url('https://phonoteka.org/uploads/posts/2022-02/1643986449_2-phonoteka-org-p-patterni-dlya-fona-2.png'); */
+  background-color: #efeded;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.2;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  
+}
+.list li{
+  padding-bottom: 10px;
+  list-style: none;
+  position: relative;
+  padding-bottom: 10px;
+  
+}
+
+.list li a {
+  text-decoration: none;
 }

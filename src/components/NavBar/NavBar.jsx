@@ -3,22 +3,24 @@ import s from './NavBar.module.css'
 
 export default function NavBar() {
   return (
-    <nav className={s.Nav}>
-        <div>
+    <nav className={s.nav}>
+      <ul className={s.list}>
+        <li>
           <a href="./#">Profile</a>
-        </div>
-        <div>
+        </li>
+        <li>
           <a href="./#">Messages</a>
-        </div>
-        <div>
+        </li>
+        <li>
           <a href="./#">Music</a>
-        </div>
-        <div>
+        </li>
+        <li>
           <a href="./#">News</a>
-        </div>
-        <div>
+        </li>
+        <li>
           <a href="./#">Settings</a>
-        </div>
+        </li>
+      </ul>
       </nav>
   )
 }
