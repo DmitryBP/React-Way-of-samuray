@@ -6,19 +6,19 @@ export default function NavBar() {
     <nav className={s.nav}>
       <ul className={s.list}>
         <li>
-          <a href="./#">Profile</a>
+          <a href="/profile">Profile</a>
         </li>
         <li>
-          <a href="./#">Messages</a>
+          <a href="/dialogs">Messages</a>
         </li>
         <li>
-          <a href="./#">Music</a>
+          <a href="/music">Music</a>
         </li>
         <li>
-          <a href="./#">News</a>
+          <a href="news">News</a>
         </li>
         <li>
-          <a href="./#">Settings</a>
+          <a href="/settings">Settings</a>
         </li>
       </ul>
       </nav>

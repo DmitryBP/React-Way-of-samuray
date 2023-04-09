@@ -12,7 +12,7 @@
   gap: 10px;
 }
 
-
-
-
-
+.appWrapperContent {
+  grid-area: c;
+  border-radius: 5px;
+}

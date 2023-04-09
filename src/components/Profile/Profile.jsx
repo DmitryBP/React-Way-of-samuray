@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 export default function Profile() {
   return (
-    <div className={s.wrapper}>
+    <div>
       <div className={s.mainBaner} />
       <div className={s.content}>
         <div>ava + discrription</div>
