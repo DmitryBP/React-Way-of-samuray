@@ -1,26 +1,38 @@
-import React from 'react'
-import s from './NavBar.module.css'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import s from './NavBar.module.css';
 
 export default function NavBar() {
+  const aStyle = ({ isActive }) => (isActive ? s.active : '');
   return (
     <nav className={s.nav}>
       <ul className={s.list}>
         <li>
-          <a href="/profile">Profile</a>
+          <NavLink to="/profile" className={aStyle}>
+            Profile
+          </NavLink>
         </li>
         <li>
-          <a href="/dialogs">Messages</a>
+          <NavLink to="/dialogs" className={aStyle}>
+            Messages
+          </NavLink>
         </li>
         <li>
-          <a href="/music">Music</a>
+          <NavLink to="/music" className={aStyle}>
+            Music
+          </NavLink>
         </li>
         <li>
-          <a href="news">News</a>
+          <NavLink to="news" className={aStyle}>
+            News
+          </NavLink>
         </li>
         <li>
-          <a href="/settings">Settings</a>
+          <NavLink to="/settings" className={aStyle}>
+            Settings
+          </NavLink>
         </li>
       </ul>
-      </nav>
-  )
+    </nav>
+  );
 }

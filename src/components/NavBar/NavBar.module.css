@@ -37,3 +37,8 @@
 .list li a {
   text-decoration: none;
 }
+
+a.active {
+  color: black;
+  font-size: 30px;
+}
