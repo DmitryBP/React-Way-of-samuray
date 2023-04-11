@@ -1,0 +1,6 @@
+.DialogsWrapper {
+  background-color: rgba(232, 121, 121, 0.456);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
