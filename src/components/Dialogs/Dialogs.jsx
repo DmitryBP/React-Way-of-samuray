@@ -1,15 +1,26 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Dialogs.module.css';
 
 export default function Dialogs() {
   return (
     <div className={s.DialogsWrapper}>
       <div className={s.dialogs}>
-        <div className={s.dialog}>Vika</div>
-        <div className={s.dialog}>Tania</div>
-        <div className={s.dialog}>Nina</div>
-        <div className={s.dialog}>Vladimir</div>
-        <div className={s.dialog}>Dima</div>
+        <div className={s.dialog}>
+          <NavLink to="dialog-1">Vika</NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to="dialog-2">Tania</NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to="dialog-3">Nina</NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to="dialog-4">Vladimir</NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to="dialog-5">Dima</NavLink>
+        </div>
       </div>
       <div className={s.Messages}>
         <div className={s.Message}>Hi</div>
