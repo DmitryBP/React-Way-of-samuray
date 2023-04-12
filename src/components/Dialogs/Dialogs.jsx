@@ -1,33 +1,54 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import Dialog from './Dialog/Dialog';
 import s from './Dialogs.module.css';
+import Message from './Messages/Message';
+
+let MessagesData = [
+  {
+    message: 'Hi',
+  },
+  {
+    message: 'How are you?',
+  },
+  {
+    message: 'Im fine',
+  },
+  {
+    message: 'And you?',
+  },
+];
+
+let DialogsData = [
+  {
+    name: 'Dima',
+    id: 1,
+  },
+  {
+    name: 'Tania',
+    id: 2,
+  },
+  {
+    name: 'Vika',
+    id: 3,
+  },
+  {
+    name: 'Nina',
+    id: 4,
+  },
+  {
+    name: 'Vladimir',
+    id: 5,
+  },
+];
+
+let messageList = MessagesData.map((message) => <Message message={message.message} />);
+let DialogsList = DialogsData.map((dialog) => <Dialog id={dialog.id} name={dialog.name} />);
 
 export default function Dialogs() {
   return (
     <div className={s.DialogsWrapper}>
-      <div className={s.dialogs}>
-        <div className={s.dialog}>
-          <NavLink to="dialog-1">Vika</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to="dialog-2">Tania</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to="dialog-3">Nina</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to="dialog-4">Vladimir</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to="dialog-5">Dima</NavLink>
-        </div>
-      </div>
-      <div className={s.Messages}>
-        <div className={s.Message}>Hi</div>
-        <div className={s.Message}>How are you?</div>
-        <div className={s.Message}>Im fine</div>
-        <div className={s.Message}>And you?</div>
-      </div>
+      <div className={s.dialogs}>{DialogsList}</div>
+      <div className={s.Messages}>{messageList}</div>
     </div>
   );
 }
