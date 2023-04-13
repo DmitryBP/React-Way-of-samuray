@@ -4,9 +4,12 @@ import s from './Dialogs.module.css';
 import Message from './Messages/Message';
 
 export default function Dialogs(props) {
-
-  let messageList = props.message.map((message) => <Message message={message.message} />);
-  let DialogsList = props.dialogs.map((dialog) => <Dialog id={dialog.id} name={dialog.name} />);
+  let messageList = props.dialogPage.messages.map((message) => (
+    <Message message={message.message} />
+  ));
+  let DialogsList = props.dialogPage.dialogs.map((dialog) => (
+    <Dialog id={dialog.id} name={dialog.name} />
+  ));
 
   return (
     <div className={s.DialogsWrapper}>
