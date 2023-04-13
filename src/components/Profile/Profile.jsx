@@ -8,7 +8,7 @@ export default function Profile(props) {
       <div className={s.mainBaner} />
       <div className={s.content}>
         <div>ava + discrription</div>
-        <MyPosts posts={props.postsData}/>
+        <MyPosts posts={props.posts}/>
       </div>
     </div>
   );

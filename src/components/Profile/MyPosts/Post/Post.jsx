@@ -6,7 +6,7 @@ export default function Post(props) {
     <div>
       <div className={s.item}>
         <img src={props.img} alt={props.alt} />
-        <div className={s.text}>{props.post}</div>
+        <div className={s.text}>{props.posts}</div>
       </div>
 
       <span className={s.like}>{props.like}</span>
