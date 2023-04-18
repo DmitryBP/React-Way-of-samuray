@@ -1,3 +1,5 @@
+import { renderEntireTree } from '../render';
+
 export let state = {
   postPage: {
     posts: [
@@ -14,6 +16,7 @@ export let state = {
         like: 'like 5',
       },
     ],
+    newPostText: '',
   },
 
   dialogPage: {
@@ -54,5 +57,39 @@ export let state = {
         message: 'And you?',
       },
     ],
+    newMessageText: '',
   },
+};
+
+window.state = state;
+
+export let addMessage = () => {
+  let newMessageObj = {
+    message: state.dialogPage.newMessageText,
+  };
+  state.dialogPage.messages.push(newMessageObj);
+  state.dialogPage.newMessageText = '';
+  renderEntireTree(state);
+};
+
+export let cheingeMessageText = (cheingedText) => {
+  state.dialogPage.newMessageText = cheingedText;
+  renderEntireTree(state);
+};
+
+export let newPostText = (newPostTextValue) => {
+  state.postPage.newPostText = newPostTextValue;
+  renderEntireTree(state);
+};
+
+export let addPost = (newPostText) => {
+  let newPost = {
+    img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
+    alt: 'img2',
+    post: state.postPage.newPostText,
+    like: 'like 6',
+  };
+  state.postPage.posts.push(newPost);
+  state.postPage.newPostText = '';
+  renderEntireTree(state);
 };

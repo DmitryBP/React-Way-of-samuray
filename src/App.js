@@ -16,8 +16,28 @@ function App(props) {
       <NavBar />
       <div className="appWrapperContent">
         <Routes>
-          <Route path="/profile" element={<Profile postPage={props.state.postPage} />} />
-          <Route path="/dialogs/*" element={<Dialogs dialogPage={props.state.dialogPage} />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                postPage={props.state.postPage}
+                newPostText={props.newPostText}
+                statePostText = {props.state.postPage.newPostText}
+                addPost={props.addPost}
+              />
+            }
+          />
+          <Route
+            path="/dialogs/*"
+            element={
+              <Dialogs
+                dialogPage={props.state.dialogPage}
+                addMessage={props.addMessage}
+                newMessageText={props.state.dialogPage.newMessageText}
+                cheingeMessageText={props.cheingeMessageText}
+              />
+            }
+          />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
@@ -26,5 +46,4 @@ function App(props) {
     </div>
   );
 }
-
 export default App;

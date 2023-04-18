@@ -1,6 +1,11 @@
 .DialogsWrapper {
+  padding: 10px;
   background-color: rgba(232, 121, 121, 0.456);
   display: grid;
   grid-template-columns: 200px 1fr;
 }
 
+.textArea {
+  display: block;
+  margin-bottom: 10px;
+}

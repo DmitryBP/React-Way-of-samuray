@@ -4,15 +4,25 @@ import s from './MyPosts.module.css';
 
 export default function MyPosts(props) {
   let PostList = props.posts.map((post) => {
-    return <Post img={post.img} alt={post.alt} post={post.posts} like={post.like} />;
+    return <Post img={post.img} alt={post.alt} post={post.post} like={post.like} />;
   });
-
+  let currentText = React.createRef();
+  let addPost = () => {
+    props.addPost()
+  }
+  let newPostText = () => {
+    let text = currentText.current.value
+    props.newPostText(text)
+  }
   return (
     <div className={s.MyPosts}>
       My posts
       <div>
-        <textarea></textarea>
-        <button>Add Post</button>
+        <textarea value={props.statePostText} className={s.textArea} ref={currentText} onChange={newPostText}></textarea>
+
+        <button onClick={addPost} className={s.btn}>
+          Add Post
+        </button>
       </div>
       <div>{PostList}</div>
     </div>

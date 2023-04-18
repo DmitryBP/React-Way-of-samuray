@@ -1,21 +1,9 @@
-
-
 .content {
-  position: relative; 
   padding: 10px;
   margin-top: 10px;   
 }
 .content::before {
   border-radius: 5px;
-  content: "";
-  background-image: url('https://phonoteka.org/uploads/posts/2022-02/1643986449_2-phonoteka-org-p-patterni-dlya-fona-2.png');
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.2;
 }
 
 .mainBaner {

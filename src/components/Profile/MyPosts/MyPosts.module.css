@@ -1,3 +1,13 @@
 .MyPosts {
   position: relative;
 }
+
+.textArea {
+  display: block;
+  margin: 10px 70px;
+
+}
+
+.btn {
+  margin: 10px 70px;
+}
