@@ -22,7 +22,7 @@ function App(props) {
               <Profile
                 postPage={props.state.postPage}
                 newPostText={props.newPostText}
-                statePostText = {props.state.postPage.newPostText}
+                statePostText={props.state.postPage.newPostText}
                 addPost={props.addPost}
               />
             }
@@ -38,8 +38,18 @@ function App(props) {
               />
             }
           />
-          <Route path="/news" element={<News />} />
-          <Route path="/music" element={<Music />} />
+          <Route
+            path="/news"
+            element={
+              <News
+                newsList={props.state.newsPage.newsList}
+                newsOnChengeFn={props.newsOnChengeFn}
+                commentText={props.state.newsPage.commentText}
+                addComment={props.addComment}
+              />
+            }
+          />
+          <Route path="/music" element={<Music musicList={props.state.musicPage.playList} />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

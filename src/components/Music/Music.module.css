@@ -1,0 +1,27 @@
+.textarea {
+  display: block;
+}
+
+.btn {
+  margin: 10px 0px;
+}
+
+.coverImg {
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.list {
+  padding: 0;
+}
+
+.list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.list span {
+  padding-left: 10px;
+}
