@@ -1,11 +1,12 @@
-import { renderEntireTree } from '../render';
 import { img } from './img/img';
+
+let renderEntireTree = () => {};
 
 export let state = {
   postPage: {
     posts: [
       {
-        img: 'https://ona-znaet.ru/_pu/19/94747440.jpg',
+        img: 'https://sun1-54.userapi.com/s/v1/if1/0h_JqumO9DvcvBnpIXKnb15tL1Ul9KUA4EIRpUCeWVaS3nxfTSppU7Prfq5xJUSJNDvOzb9X.jpg?size=200x200&quality=96&crop=139,0,437,437&ava=1',
         alt: 'img1',
         post: 'это тестовый пост 1',
         like: 'like 3',
@@ -160,7 +161,7 @@ export let newPostText = (newPostTextValue) => {
   renderEntireTree(state);
 };
 
-export let addPost = (newPostText) => {
+export let addPost = () => {
   let newPost = {
     img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
     alt: 'img2',
@@ -178,18 +179,21 @@ export let newsOnChengeFn = (text) => {
 };
 
 export let addComment = () => {
-  let newComment =  {
+  let newComment = {
     newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
-    newDiskription:
-    state.newsPage.commentText,
+    newDiskription: state.newsPage.commentText,
     newImg: img.news1,
     newSourse: {
       sorseImg:
         'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
       sorsTitle: 'РБК',
       sorseTime: '12:45',
-    }
-  }
+    },
+  };
   state.newsPage.newsList.push(newComment);
   renderEntireTree(state);
 };
+
+export let subscrib = (observer) => {
+  renderEntireTree = observer
+}
