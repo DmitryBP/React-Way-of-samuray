@@ -11,20 +11,11 @@ export let renderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App
-          state={state}
-          addMessage={store.addMessage.bind(store)}
-          addPost={store.addPost.bind(store)}
-          addComment = {store.addComment.bind(store)}
-          cheingeMessageText={store.cheingeMessageText.bind(store)}
-          newPostText={store.newPostText.bind(store)}
-          newsOnChengeFn={store.newsOnChengeFn.bind(store)}
-        />
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>
   );
 };
-
 
 renderEntireTree(store.getState());
 store.subscrib(renderEntireTree);

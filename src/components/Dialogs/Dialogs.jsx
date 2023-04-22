@@ -13,19 +13,19 @@ export default function Dialogs(props) {
   let entredMessageText = React.createRef();
 
   let addMessage = () => {
-    props.addMessage();
+    props.dispatch({ type: 'ADD-MESSAGE' });
   };
-  let cheingeMessageText = () => {
+  let updateNewMessageText = () => {
     let text = entredMessageText.current.value;
-    props.cheingeMessageText(text)
-  }
+    props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', cheingedText: text });
+  };
 
   return (
     <div className={s.DialogsWrapper}>
       <div className={s.dialogs}>{DialogsList}</div>
       <div className={s.Messages}>
         <textarea
-          onChange={cheingeMessageText}
+          onChange={updateNewMessageText}
           value={props.newMessageText}
           ref={entredMessageText}
           className={s.textArea}

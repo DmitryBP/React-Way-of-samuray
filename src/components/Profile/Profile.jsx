@@ -10,9 +10,9 @@ export default function Profile(props) {
         <div>ava + discrription</div>
         <MyPosts
           posts={props.postPage.posts}
-          addPost={props.addPost}
-          newPostText={props.newPostText}
-          statePostText = {props.statePostText}
+          statePostText={props.statePostText}
+          dispatch={props.dispatch}
+          NewPostText={props.NewPostText}
         />
       </div>
     </div>

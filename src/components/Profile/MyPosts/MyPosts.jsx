@@ -8,17 +8,22 @@ export default function MyPosts(props) {
   });
   let currentText = React.createRef();
   let addPost = () => {
-    props.addPost()
-  }
-  let newPostText = () => {
-    let text = currentText.current.value
-    props.newPostText(text)
-  }
+    props.dispatch({ type: 'ADD-POST' });
+  };
+  let NewPostText = () => {
+    let text = currentText.current.value;
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', NewPostText: text });
+  };
   return (
     <div className={s.MyPosts}>
       My posts
       <div>
-        <textarea value={props.statePostText} className={s.textArea} ref={currentText} onChange={newPostText}></textarea>
+        <textarea
+          value={props.statePostText}
+          className={s.textArea}
+          ref={currentText}
+          onChange={NewPostText}
+        ></textarea>
 
         <button onClick={addPost} className={s.btn}>
           Add Post

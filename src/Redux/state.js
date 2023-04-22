@@ -1,6 +1,6 @@
 import { img } from './img/img';
 
- let store = {
+let store = {
   _state: {
     postPage: {
       posts: [
@@ -17,7 +17,7 @@ import { img } from './img/img';
           like: 'like 5',
         },
       ],
-      newPostText: '',
+      NewPostText: '',
     },
 
     dialogPage: {
@@ -139,69 +139,60 @@ import { img } from './img/img';
     },
   },
 
+  _collSubsriber() {},
+
   getState() {
     return this._state;
   },
 
-  addPost() {
-    let newPost = {
-      img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
-      alt: 'img2',
-      post: this._state.postPage.newPostText,
-      like: 'like 6',
-    };
-    this._state.postPage.posts.push(newPost);
-    this._state.postPage.newPostText = '';
-    this._collSubsriber(this._state);
-  },
-
-  addMessage() {
-    let newMessageObj = {
-      message: this._state.dialogPage.newMessageText,
-    };
-    this._state.dialogPage.messages.push(newMessageObj);
-    this._state.dialogPage.newMessageText = '';
-    this._collSubsriber(this._state);
-  },
-
-  addComment() {
-    
-    let newComment = {
-      newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
-      newDiskription: this._state.newsPage.commentText,
-      newImg: img.news1,
-      newSourse: {
-        sorseImg:
-          'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-        sorsTitle: 'РБК',
-        sorseTime: '12:45',
-      },
-    };
-    this._state.newsPage.newsList.push(newComment);
-    this._collSubsriber(this._state);
-  },
-
-  newPostText(newPostTextValue) {
-    this._state.postPage.newPostText = newPostTextValue;
-    this._collSubsriber(this._state);
-  },
-
-  cheingeMessageText(cheingedText) {
-    this._state.dialogPage.newMessageText = cheingedText;
-    this._collSubsriber(this._state);
-  },
-
-  newsOnChengeFn(text) {
-    this._state.newsPage.commentText = text;
-    this._collSubsriber(this._state);
-  },
-
-  _collSubsriber() {},
-
   subscrib(observer) {
     this._collSubsriber = observer;
   },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
+        alt: 'img2',
+        post: this._state.postPage.NewPostText,
+        like: 'like 6',
+      };
+      this._state.postPage.posts.push(newPost);
+      this._state.postPage.NewPostText = '';
+      this._collSubsriber(this._state);
+    } else if (action.type === 'ADD-MESSAGE') {
+      let newMessageObj = {
+        message: this._state.dialogPage.newMessageText,
+      };
+      this._state.dialogPage.messages.push(newMessageObj);
+      this._state.dialogPage.newMessageText = '';
+      this._collSubsriber(this._state);
+    } else if (action.type === 'ADD-COMMENT') {
+      let newComment = {
+        newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
+        newDiskription: this._state.newsPage.commentText,
+        newImg: img.news1,
+        newSourse: {
+          sorseImg:
+            'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
+          sorsTitle: 'РБК',
+          sorseTime: '12:45',
+        },
+      };
+      this._state.newsPage.newsList.push(newComment);
+      this._collSubsriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.postPage.NewPostText = action.NewPostText;
+      this._collSubsriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._state.dialogPage.newMessageText = action.cheingedText;
+      this._collSubsriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-NEWS-TEXT') {
+      this._state.newsPage.commentText = action.text;
+      this._collSubsriber(this._state);
+    }
+  },
 };
 
-export default store
+export default store;
 window.store = store;

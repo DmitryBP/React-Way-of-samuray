@@ -21,10 +21,8 @@ function App(props) {
             element={
               <Profile
                 postPage={props.state.postPage}
-                newPostText={props.newPostText}
-                statePostText={props.state.postPage.newPostText}
-                
-                addPost={props.addPost}
+                statePostText={props.state.postPage.NewPostText}
+                dispatch={props.dispatch}
               />
             }
           />
@@ -33,9 +31,8 @@ function App(props) {
             element={
               <Dialogs
                 dialogPage={props.state.dialogPage}
-                addMessage={props.addMessage}
                 newMessageText={props.state.dialogPage.newMessageText}
-                cheingeMessageText={props.cheingeMessageText}
+                dispatch={props.dispatch}
               />
             }
           />
@@ -44,9 +41,8 @@ function App(props) {
             element={
               <News
                 newsList={props.state.newsPage.newsList}
-                newsOnChengeFn={props.newsOnChengeFn}
                 commentText={props.state.newsPage.commentText}
-                addComment={props.addComment}
+                dispatch={props.dispatch}
               />
             }
           />
