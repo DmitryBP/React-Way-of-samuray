@@ -1,16 +1,8 @@
-import { state, subscrib } from './Redux/state';
+import store from './Redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {
-  addComment,
-  addMessage,
-  addPost,
-  cheingeMessageText,
-  newPostText,
-  newsOnChengeFn,
-} from './Redux/state';
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,12 +13,12 @@ export let renderEntireTree = (state) => {
       <BrowserRouter>
         <App
           state={state}
-          addMessage={addMessage}
-          addPost={addPost}
-          addComment = {addComment}
-          cheingeMessageText={cheingeMessageText}
-          newPostText={newPostText}
-          newsOnChengeFn={newsOnChengeFn}
+          addMessage={store.addMessage.bind(store)}
+          addPost={store.addPost.bind(store)}
+          addComment = {store.addComment.bind(store)}
+          cheingeMessageText={store.cheingeMessageText.bind(store)}
+          newPostText={store.newPostText.bind(store)}
+          newsOnChengeFn={store.newsOnChengeFn.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>
@@ -34,5 +26,5 @@ export let renderEntireTree = (state) => {
 };
 
 
-renderEntireTree(state);
-subscrib(renderEntireTree);
+renderEntireTree(store.getState());
+store.subscrib(renderEntireTree);

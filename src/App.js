@@ -23,6 +23,7 @@ function App(props) {
                 postPage={props.state.postPage}
                 newPostText={props.newPostText}
                 statePostText={props.state.postPage.newPostText}
+                
                 addPost={props.addPost}
               />
             }

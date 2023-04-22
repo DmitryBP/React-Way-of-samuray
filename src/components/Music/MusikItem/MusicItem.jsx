@@ -2,7 +2,6 @@ import React from 'react';
 import s from '../Music.module.css';
 
 export default function MusicItem(props) {
-// debugger
   return (
     <div>
       <li>
