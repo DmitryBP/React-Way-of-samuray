@@ -6,11 +6,11 @@ export default function NewsItem(props) {
 
   let onChage = () => {
     let text = entredText.current.value;
-    props._updateNewNewsText(text);
+    props.dispatch({ type: 'UPDATE-NEW-NEWS-TEXT', text: text });
   };
 
-  let _addComment = () => {
-    props._addComment();
+  let addComment = () => {
+    props.dispatch({ type: 'ADD-COMMENT' });
   };
 
   return (
@@ -26,7 +26,7 @@ export default function NewsItem(props) {
         value={props.commentText}
         onChange={onChage}
       ></textarea>
-      <button onClick={_addComment}>Add comment</button>
+      <button onClick={addComment}>Add comment</button>
     </div>
   );
 }

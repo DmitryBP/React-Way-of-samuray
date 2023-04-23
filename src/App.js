@@ -46,7 +46,16 @@ function App(props) {
               />
             }
           />
-          <Route path="/music" element={<Music musicList={props.state.musicPage.playList} />} />
+          <Route
+            path="/music"
+            element={
+              <Music
+                musicList={props.state.musicPage.playList}
+                newArtistText={props.state.musicPage.newArtistText}
+                dispatch={props.dispatch}
+              />
+            }
+          />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

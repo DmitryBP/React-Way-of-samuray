@@ -8,9 +8,7 @@ export default function News(props) {
         title={newItem.newTitle}
         diskription={newItem.newDiskription}
         img={newItem.newImg}
-        _updateNewNewsText={props._updateNewNewsText}
-        commentText={props.commentText}
-        _addComment={props._addComment}
+        dispatch={props.dispatch}
       />
     );
   });

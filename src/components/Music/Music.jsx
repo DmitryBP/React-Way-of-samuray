@@ -1,4 +1,5 @@
 import React from 'react';
+import { addMusicActionCcreator, updateNewMusicActionCreator } from '../../Redux/state';
 import s from './Music.module.css';
 import MusicItem from './MusikItem/MusicItem';
 
@@ -12,14 +13,33 @@ export default function Music(props) {
       />
     );
   });
+
+  let textareaValue = React.createRef();
+
+  let onCheinge = () => {
+    let text = textareaValue.current.value;
+    props.dispatch(updateNewMusicActionCreator(text));
+  };
+
+  let onClick = () => {
+    props.dispatch(addMusicActionCcreator());
+  };
+
   return (
     <div>
       <h1>Music</h1>
       <div>Play list</div>
       <ul className={s.list}>{musicItemList}</ul>
       <div>
-        <textarea className={s.textarea}></textarea>
-        <button className={s.btn}>Add song</button>
+        <textarea
+          ref={textareaValue}
+          className={s.textarea}
+          value={props.newArtistText}
+          onChange={onCheinge}
+        ></textarea>
+        <button onClick={onClick} className={s.btn}>
+          Add song
+        </button>
       </div>
     </div>
   );

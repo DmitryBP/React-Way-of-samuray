@@ -1,5 +1,14 @@
 import { img } from './img/img';
 
+const ADD_POST = 'ADD-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MUSIC = 'ADD-MUSIC';
+const ADD_COMMENT = 'ADD-COMMENT';
+const UP_DAATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const UPDATE_NEW_NEWS_TEXT = 'UPDATE-NEW-NEWS-TEXT';
+const UPDATE_NEW_MUSIC_TEXT = 'UPDATE_NEW_MUSIC_TEXT';
+
 let store = {
   _state: {
     postPage: {
@@ -19,7 +28,6 @@ let store = {
       ],
       NewPostText: '',
     },
-
     dialogPage: {
       dialogs: [
         {
@@ -60,7 +68,6 @@ let store = {
       ],
       newMessageText: '',
     },
-
     musicPage: {
       playList: [
         {
@@ -81,8 +88,8 @@ let store = {
           song: 'Your life',
         },
       ],
+      newArtistText: '',
     },
-
     newsPage: {
       newsList: [
         {
@@ -150,7 +157,7 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    if (action.type === ADD_POST) {
       let newPost = {
         img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
         alt: 'img2',
@@ -160,14 +167,23 @@ let store = {
       this._state.postPage.posts.push(newPost);
       this._state.postPage.NewPostText = '';
       this._collSubsriber(this._state);
-    } else if (action.type === 'ADD-MESSAGE') {
+    } else if (action.type === ADD_MESSAGE) {
       let newMessageObj = {
         message: this._state.dialogPage.newMessageText,
       };
       this._state.dialogPage.messages.push(newMessageObj);
       this._state.dialogPage.newMessageText = '';
       this._collSubsriber(this._state);
-    } else if (action.type === 'ADD-COMMENT') {
+    } else if (action.type === ADD_MUSIC) {
+      let musicObj = {
+        albumCover:
+          'https://i.pinimg.com/236x/e3/11/97/e31197163a6b720d88eb0d5f67e082d2--rihanna-makeup-dip-dyed.jpg',
+        artist: this._state.musicPage.newArtistText,
+        song: 'Rain',
+      };
+      this._state.musicPage.playList.push(musicObj);
+      this._collSubsriber(this._state);
+    } else if (action.type === ADD_COMMENT) {
       let newComment = {
         newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
         newDiskription: this._state.newsPage.commentText,
@@ -181,18 +197,35 @@ let store = {
       };
       this._state.newsPage.newsList.push(newComment);
       this._collSubsriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UP_DAATE_NEW_POST_TEXT) {
       this._state.postPage.NewPostText = action.NewPostText;
       this._collSubsriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogPage.newMessageText = action.cheingedText;
       this._collSubsriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-NEWS-TEXT') {
+    } else if (action.type === UPDATE_NEW_NEWS_TEXT) {
       this._state.newsPage.commentText = action.text;
+      this._collSubsriber(this._state);
+    } else if (action.type === UPDATE_NEW_MUSIC_TEXT) {
+      this._state.musicPage.newArtistText = action.newArtistText;
       this._collSubsriber(this._state);
     }
   },
 };
+
+export let addPostactionCriater = () => ({ type: ADD_POST });
+
+export let addMusicActionCcreator = () => ({ type: ADD_MUSIC });
+
+export let upDateNewPostTextactionCriater = (text) => ({
+  type: UP_DAATE_NEW_POST_TEXT,
+  NewPostText: text,
+});
+
+export const updateNewMusicActionCreator = (text) => ({
+  type: UPDATE_NEW_MUSIC_TEXT,
+  newArtistText: text,
+});
 
 export default store;
 window.store = store;
