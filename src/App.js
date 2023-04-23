@@ -40,9 +40,9 @@ function App(props) {
             path="/news"
             element={
               <News
-                newsList={props.state.newsPage.newsList}
-                commentText={props.state.newsPage.commentText}
-                dispatch={props.dispatch}
+              newsList={props.state.newsPage.newsList}
+              dispatch={props.dispatch}
+              newNewsText={props.state.newsPage.newNewsText}
               />
             }
           />

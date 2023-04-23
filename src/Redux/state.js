@@ -1,15 +1,14 @@
-import { img } from './img/img';
+const ADD_NEWS = 'ADD-NEWS';
+const UPDATE_NEWS_TEXT = 'UPDATE-NEWS-TEXT';
 
 const ADD_POST = 'ADD-POST';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const ADD_MUSIC = 'ADD-MUSIC';
-const ADD_COMMENT = 'ADD-COMMENT';
 const UP_DAATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const UPDATE_NEW_NEWS_TEXT = 'UPDATE-NEW-NEWS-TEXT';
 const UPDATE_NEW_MUSIC_TEXT = 'UPDATE_NEW_MUSIC_TEXT';
 
-let store = {
+const store = {
   _state: {
     postPage: {
       posts: [
@@ -93,56 +92,19 @@ let store = {
     newsPage: {
       newsList: [
         {
-          newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
-          newDiskription:
-            'В Сети появился свежий трейлер десятой части фильма «Форсаж» с Вином Дизелем и Джейсоном Момоа в главных ролях.',
-          newImg: img.news1,
-          newSourse: {
-            sorseImg:
-              'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-            sorsTitle: 'РБК',
-            sorseTime: '12:45',
-          },
+          sors: 'RBK',
+          newsTitle: 'Киркоров опять в Ялте',
         },
         {
-          newTitle:
-            'Осудивший спецоперацию Александр Ревва стал втрое больше зарабатывать на россиянах',
-          newDiskription:
-            '"Карьера Александра Реввы в России окончена": такими заголовками СМИ запестрели пару недель назад, когда гастроли комика и по совместительству певца отменили сначала в Краснодаре...',
-          newImg: img.reva,
-          newSourse: {
-            sorseImg:
-              'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-            sorsTitle: 'РБК',
-            sorseTime: '12:45',
-          },
+          sors: 'Live',
+          newsTitle: 'Шура вставил зубы',
         },
         {
-          newTitle: 'Греки раскритиковали Netflix за выбор темнокожей актрисы на роль Клеопатры',
-          newDiskription:
-            'В Сети появился свежий трейлер десятой части фильма «Форсаж» с Вином Дизелем и Джейсоном Момоа в главных ролях.',
-          newImg: img.kleo,
-          newSourse: {
-            sorseImg:
-              'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-            sorsTitle: 'РБК',
-            sorseTime: '12:45',
-          },
-        },
-        {
-          newTitle: 'Телеканал «Муз-ТВ» убрал Елену Темникову из фильма про «Фабрику звезд»',
-          newDiskription:
-            'Елена Темникова заняла третье место во втором сезоне «Фабрики звезд» в 2003 году, уступив лишь Полине Гагариной и Елене Терлеевой.',
-          newImg: img.temnik,
-          newSourse: {
-            sorseImg:
-              'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-            sorsTitle: 'РБК',
-            sorseTime: '12:45',
-          },
+          sors: 'Дождь',
+          newsTitle: 'Карамурзе дали 25 лет',
         },
       ],
-      commentText: '',
+      newNewsText: '',
     },
   },
 
@@ -182,20 +144,7 @@ let store = {
         song: 'Rain',
       };
       this._state.musicPage.playList.push(musicObj);
-      this._collSubsriber(this._state);
-    } else if (action.type === ADD_COMMENT) {
-      let newComment = {
-        newTitle: 'Вышел новый трейлер «Форсажа 10» с Вином Дизелем и Джейсоном Момоа',
-        newDiskription: this._state.newsPage.commentText,
-        newImg: img.news1,
-        newSourse: {
-          sorseImg:
-            'https://avatars.dzeninfra.ru/get-ynews-logo/117671/1027-1530099491421-square/logo-square',
-          sorsTitle: 'РБК',
-          sorseTime: '12:45',
-        },
-      };
-      this._state.newsPage.newsList.push(newComment);
+      this._state.musicPage.newArtistText = '';
       this._collSubsriber(this._state);
     } else if (action.type === UP_DAATE_NEW_POST_TEXT) {
       this._state.postPage.NewPostText = action.NewPostText;
@@ -203,11 +152,19 @@ let store = {
     } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogPage.newMessageText = action.cheingedText;
       this._collSubsriber(this._state);
-    } else if (action.type === UPDATE_NEW_NEWS_TEXT) {
-      this._state.newsPage.commentText = action.text;
-      this._collSubsriber(this._state);
     } else if (action.type === UPDATE_NEW_MUSIC_TEXT) {
       this._state.musicPage.newArtistText = action.newArtistText;
+      this._collSubsriber(this._state);
+    } else if (action.type === ADD_NEWS) {
+      let newNewsObj = {
+        sors: 'RBK',
+        newsTitle: this._state.newsPage.newNewsText,
+      };
+      this._state.newsPage.newsList.push(newNewsObj);
+      this._state.newsPage.newNewsText = '';
+      this._collSubsriber(this._state);
+    } else if (action.type === UPDATE_NEWS_TEXT) {
+      this._state.newsPage.newNewsText = action.textareaValue;
       this._collSubsriber(this._state);
     }
   },
@@ -215,7 +172,7 @@ let store = {
 
 export let addPostactionCriater = () => ({ type: ADD_POST });
 
-export let addMusicActionCcreator = () => ({ type: ADD_MUSIC });
+export let addMusicActionCreator = () => ({ type: ADD_MUSIC });
 
 export let upDateNewPostTextactionCriater = (text) => ({
   type: UP_DAATE_NEW_POST_TEXT,
@@ -226,6 +183,17 @@ export const updateNewMusicActionCreator = (text) => ({
   type: UPDATE_NEW_MUSIC_TEXT,
   newArtistText: text,
 });
+
+export let updateNewsActioCreator = (textareaValue) => {
+  return {
+    type: UPDATE_NEWS_TEXT,
+    textareaValue: textareaValue,
+  };
+};
+
+export let updateAddNewsAcionCreaor = () => {
+  return { type: ADD_NEWS };
+};
 
 export default store;
 window.store = store;

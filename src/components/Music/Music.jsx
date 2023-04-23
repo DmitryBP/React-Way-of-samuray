@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMusicActionCcreator, updateNewMusicActionCreator } from '../../Redux/state';
+import { addMusicActionCreator, updateNewMusicActionCreator } from '../../Redux/state';
 import s from './Music.module.css';
 import MusicItem from './MusikItem/MusicItem';
 
@@ -22,7 +22,7 @@ export default function Music(props) {
   };
 
   let onClick = () => {
-    props.dispatch(addMusicActionCcreator());
+    props.dispatch(addMusicActionCreator());
   };
 
   return (

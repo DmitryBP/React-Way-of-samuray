@@ -1,22 +1,32 @@
 import React from 'react';
-import NewsItem from './newsItem';
+import NewsItem from './NewsItem';
+import s from './news.module.css';
+import { updateAddNewsAcionCreaor, updateNewsActioCreator } from '../../Redux/state';
 
 export default function News(props) {
-  let newsItemList = props.newsList.map((newItem) => {
-    return (
-      <NewsItem
-        title={newItem.newTitle}
-        diskription={newItem.newDiskription}
-        img={newItem.newImg}
-        dispatch={props.dispatch}
-      />
-    );
+  let newsList = props.newsList.map((news) => {
+    return <NewsItem newsTitle={news.newsTitle} sors={news.sors} />;
   });
+
+  let onChange = (e) => {
+    let textareaValue = e.target.value;
+    props.dispatch(updateNewsActioCreator(textareaValue));
+  };
+
+  let onClick = () => {
+    props.dispatch(updateAddNewsAcionCreaor())
+  }
 
   return (
     <div>
-      <h1>News</h1>
-      {newsItemList}
+      <h1 className={s.h1}>News</h1>
+      <div>{newsList}</div>
+      <div>
+        <textarea className={s.textarea1} value={props.newNewsText} onChange={onChange} />
+        <button 
+        onClick={onClick}
+        >add News</button>
+      </div>
     </div>
   );
 }
