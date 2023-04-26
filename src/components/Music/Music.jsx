@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMusicActionCreator, updateNewMusicActionCreator } from '../../Redux/state';
+import { addMusicActionCreator, updateNewMusicActionCreator } from '../../Redux/Music-reducer';
 import s from './Music.module.css';
 import MusicItem from './MusikItem/MusicItem';
 

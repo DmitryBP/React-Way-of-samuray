@@ -1,9 +1,8 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
-import { addPostactionCriater, upDateNewPostTextactionCriater } from '../../../Redux/state';
-
-
+import { upDateNewPostTextactionCriater } from '../../../Redux/Profile-reducer';
+import { addPostactionCriater } from '../../../Redux/Profile-reducer';
 
 export default function MyPosts(props) {
   let PostList = props.posts.map((post) => {

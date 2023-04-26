@@ -1,7 +1,7 @@
 import React from 'react';
 import NewsItem from './NewsItem';
 import s from './news.module.css';
-import { updateAddNewsAcionCreaor, updateNewsActioCreator } from '../../Redux/state';
+import { updateAddNewsAcionCreaor, updateNewsActioCreator } from '../../Redux/News-reducer';
 
 export default function News(props) {
   let newsList = props.newsList.map((news) => {
