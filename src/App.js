@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
-import Music from './components/Music/Music';
+import MusicContainer from './components/Music/MusicContainer';
 import NavBar from './components/NavBar/NavBar';
-import News from './components/News/News';
+import NewsContainer from './components/News/NewsContainer';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
@@ -16,46 +16,10 @@ function App(props) {
       <NavBar />
       <div className="appWrapperContent">
         <Routes>
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                postPage={props.state.postPage}
-                statePostText={props.state.postPage.NewPostText}
-                dispatch={props.dispatch}
-              />
-            }
-          />
-          <Route
-            path="/dialogs/*"
-            element={
-              <Dialogs
-                dialogPage={props.state.dialogPage}
-                newMessageText={props.state.dialogPage.newMessageText}
-                dispatch={props.dispatch}
-              />
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              <News
-              newsList={props.state.newsPage.newsList}
-              dispatch={props.dispatch}
-              newNewsText={props.state.newsPage.newNewsText}
-              />
-            }
-          />
-          <Route
-            path="/music"
-            element={
-              <Music
-                musicList={props.state.musicPage.playList}
-                newArtistText={props.state.musicPage.newArtistText}
-                dispatch={props.dispatch}
-              />
-            }
-          />
+          <Route path="/profile" element={<Profile store={props.store} />} />
+          <Route path="/dialogs/*" element={<DialogsContainer store={props.store} />} />
+          <Route path="/news" element={<NewsContainer store={props.store} />} />
+          <Route path="/music" element={<MusicContainer store={props.store} />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

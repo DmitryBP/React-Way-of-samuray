@@ -1,5 +1,5 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import s from './Profile.module.css';
 
 export default function Profile(props) {
@@ -8,11 +8,8 @@ export default function Profile(props) {
       <div className={s.mainBaner} />
       <div className={s.content}>
         <div>ava + discrription</div>
-        <MyPosts
-          posts={props.postPage.posts}
-          statePostText={props.statePostText}
-          dispatch={props.dispatch}
-          NewPostText={props.NewPostText}
+        <MyPostsContainer 
+          store = {props.store}
         />
       </div>
     </div>

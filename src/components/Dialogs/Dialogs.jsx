@@ -4,20 +4,21 @@ import s from './Dialogs.module.css';
 import Message from './Messages/Message';
 
 export default function Dialogs(props) {
-  let messageList = props.dialogPage.messages.map((message) => (
+  let state = props.dialogPage
+  let messageList = state.messages.map((message) => (
     <Message message={message.message} />
   ));
-  let DialogsList = props.dialogPage.dialogs.map((dialog) => (
+  let DialogsList = state.dialogs.map((dialog) => (
     <Dialog id={dialog.id} name={dialog.name} />
   ));
-  let entredMessageText = React.createRef();
 
   let addMessage = () => {
-    props.dispatch({ type: 'ADD-MESSAGE' });
+    props.addMessage();
   };
-  let updateNewMessageText = () => {
-    let text = entredMessageText.current.value;
-    props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', cheingedText: text });
+
+  let updateNewMessageText = (e) => {
+    let text = e.target.value;
+    props.updateNewMessageText(text);
   };
 
   return (
@@ -26,8 +27,7 @@ export default function Dialogs(props) {
       <div className={s.Messages}>
         <textarea
           onChange={updateNewMessageText}
-          value={props.newMessageText}
-          ref={entredMessageText}
+          // value={props.newMessageText}
           className={s.textArea}
         ></textarea>
         <button onClick={addMessage}>Add message</button>

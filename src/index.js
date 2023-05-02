@@ -8,16 +8,18 @@ import store from './Redux/redux-store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 export let renderEntireTree = (state) => {
-  // debugger;
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} />
+        <App 
+        store={store}
+        state={state} 
+        dispatch={store.dispatch.bind(store)} 
+        />
       </BrowserRouter>
     </React.StrictMode>
   );
 };
-// console.log(store)
 renderEntireTree(store.getState());
 
 store.subscribe(() => {
