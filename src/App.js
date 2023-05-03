@@ -9,17 +9,17 @@ import NewsContainer from './components/News/NewsContainer';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
-function App(props) {
+function App() {
   return (
     <div className="appWrapper">
       <Header />
       <NavBar />
       <div className="appWrapperContent">
         <Routes>
-          <Route path="/profile" element={<Profile store={props.store} />} />
-          <Route path="/dialogs/*" element={<DialogsContainer store={props.store} />} />
-          <Route path="/news" element={<NewsContainer store={props.store} />} />
-          <Route path="/music" element={<MusicContainer store={props.store} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dialogs/*" element={<DialogsContainer />} />
+          <Route path="/news" element={<NewsContainer />} />
+          <Route path="/music" element={<MusicContainer />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

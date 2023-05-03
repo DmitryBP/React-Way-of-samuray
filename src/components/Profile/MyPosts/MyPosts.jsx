@@ -23,7 +23,7 @@ export default function MyPosts(props) {
       My posts
       <div>
         <textarea
-          value={props.statePostText}
+          value={props.newPostText}
           className={s.textArea}
           ref={currentText}
           onChange={NewPostText}

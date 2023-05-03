@@ -8,9 +8,7 @@ export default function Profile(props) {
       <div className={s.mainBaner} />
       <div className={s.content}>
         <div>ava + discrription</div>
-        <MyPostsContainer 
-          store = {props.store}
-        />
+        <MyPostsContainer />
       </div>
     </div>
   );
