@@ -15,7 +15,7 @@ export default function MyPosts(props) {
 
   let NewPostText = () => {
     let text = currentText.current.value;
-    props.upDateNewPostText(text);
+    props.onNewPostText(text);
   };
 
   return (

@@ -17,23 +17,29 @@ let initialState = {
     },
   ],
   NewPostText: '',
-}
+};
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         img: 'https://ulibky.ru/wp-content/uploads/2019/10/avatarki_dlya_vatsap_dlya_devushek_42_28061027.jpg',
         alt: 'img2',
         post: state.NewPostText,
         like: 'like 6',
       };
-      state.posts.push(newPost);
-      state.NewPostText = '';
-      return state;
-    case UP_DAATE_NEW_POST_TEXT:
-      state.NewPostText = action.NewPostText;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.posts = [...state.posts];
+      stateCopy.posts.push(newPost);
+      stateCopy.NewPostText = '';
+      return stateCopy;
+    }
+    case UP_DAATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.NewPostText = action.NewPostText;
+      return stateCopy;
+    }
+
     default:
       return state;
   }
@@ -44,4 +50,4 @@ export const upDateNewPostTextactionCriater = (text) => ({
   NewPostText: text,
 });
 
-export default profileReducer
+export default profileReducer;

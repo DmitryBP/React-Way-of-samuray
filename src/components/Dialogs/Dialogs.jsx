@@ -4,20 +4,18 @@ import s from './Dialogs.module.css';
 import Message from './Messages/Message';
 
 export default function Dialogs(props) {
-  let state = props.dialogPage
-  let messageList = state.messages.map((message) => (
-    <Message message={message.message} />
-  ));
-  let DialogsList = state.dialogs.map((dialog) => (
-    <Dialog id={dialog.id} name={dialog.name} />
-  ));
+  const messages = props.messages;
+  const dialogs = props.dialogs;
 
-  let addMessage = () => {
+  const messageList = messages.map((message) => <Message message={message.message} />);
+  const DialogsList = dialogs.map((dialog) => <Dialog id={dialog.id} name={dialog.name} />);
+
+  const addMessage = () => {
     props.addMessage();
   };
 
-  let updateNewMessageText = (e) => {
-    let text = e.target.value;
+  const updateNewMessageText = (e) => {
+    const text = e.target.value;
     props.updateNewMessageText(text);
   };
 
@@ -27,7 +25,7 @@ export default function Dialogs(props) {
       <div className={s.Messages}>
         <textarea
           onChange={updateNewMessageText}
-          // value={props.newMessageText}
+          value={props.newMessageText}
           className={s.textArea}
         ></textarea>
         <button onClick={addMessage}>Add message</button>
