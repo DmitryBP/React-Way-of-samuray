@@ -24,7 +24,7 @@ const initialState = {
   newArtistText: '',
 };
 
-export let addMusicActionCreator = () => ({ type: ADD_MUSIC });
+export const addMusicActionCreator = () => ({ type: ADD_MUSIC });
 
 export const updateNewMusicActionCreator = (text) => ({
   type: UPDATE_NEW_MUSIC_TEXT,
@@ -34,22 +34,28 @@ export const updateNewMusicActionCreator = (text) => ({
 const musicReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MUSIC:
-      let newMusicObj = {
+      const newMusicObj = {
         albumCover:
           'https://mediamall.am/timthumb.php?src=upload/52210.png&w=300&h=300&mt=1505519127',
         artist: state.newArtistText,
         song: 'Blue sky',
       };
-      state.playList.push(newMusicObj);
-      return state;
+      return {
+        ...state,
+        playList: [...state.playList, newMusicObj],
+        newArtistText: '',
+      };
 
     case UPDATE_NEW_MUSIC_TEXT:
-      state.newArtistText = action.newArtistText
-      return state;
+      state.newArtistText = action.newArtistText;
+      return {
+        ...state,
+        newArtistText: action.newArtistText,
+      };
 
     default:
       return state;
   }
 };
 
-export default musicReducer
+export default musicReducer;

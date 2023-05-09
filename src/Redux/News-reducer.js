@@ -3,49 +3,57 @@ const UPDATE_NEWS_TEXT = 'UPDATE-NEWS-TEXT';
 const initialState = {
   newsList: [
     {
+      id: 1,
       sors: 'RBK',
       newsTitle: 'Киркоров опять в Ялте',
     },
     {
+      id: 2,
       sors: 'Live',
       newsTitle: 'Шура вставил зубы',
     },
     {
+      id: 3,
       sors: 'Дождь',
       newsTitle: 'Карамурзе дали 25 лет',
     },
   ],
   newNewsText: '',
-}
+};
 
- const newsReducer = (state = initialState, action) =>  {
+const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEWS:
-      let newNewsObj = {
+      const newNewsObj = {
+        id: 123,
         sors: 'RBK',
         newsTitle: state.newNewsText,
       };
-      state.newsList.push(newNewsObj);
-      state.newNewsText = '';
-      return state;
+      return {
+        ...state,
+        newsList: [...state.newsList, newNewsObj],
+        newNewsText: '',
+      };
     case UPDATE_NEWS_TEXT:
-      state.newNewsText = action.textareaValue;
-      return state;
-  
+      return {
+        ...state,
+        newNewsText: action.textareaValue,
+      };
+
     default:
       return state;
   }
-}
+};
 
-export let updateNewsActioCreator = (textareaValue) => {
+export const updateNewsActioCreator = (textareaValue) => {
   return {
     type: UPDATE_NEWS_TEXT,
-    textareaValue: textareaValue,
+    textareaValue,
   };
 };
 
-export let updateAddNewsAcionCreaor = () => {
+export const updateAddNewsAcionCreaor = () => {
   return { type: ADD_NEWS };
 };
 
-export default newsReducer
+export default newsReducer;

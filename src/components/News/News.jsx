@@ -3,16 +3,16 @@ import NewsItem from './NewsItem';
 import s from './News.module.css';
 
 export default function News(props) {
-  let newsList = props.newList.map((news) => {
-    return <NewsItem newsTitle={news.newsTitle} sors={news.sors} />;
+  const newsList = props.newList.map((news) => {
+    return <NewsItem newsTitle={news.newsTitle} sors={news.sors} key={news.id}/>;
   });
 
-  let onChange = (e) => {
-    let textareaValue = e.target.value;
+  const onChange = (e) => {
+    const textareaValue = e.target.value;
     props.onChangeText(textareaValue);
   };
 
-  let onClick = () => {
+  const onClick = () => {
     props.onClickBtn()
   }
 

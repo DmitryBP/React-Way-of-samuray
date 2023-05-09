@@ -4,7 +4,7 @@ import s from './MyPosts.module.css';
 
 export default function MyPosts(props) {
   let PostList = props.posts.map((post) => {
-    return <Post img={post.img} alt={post.alt} post={post.post} like={post.like} />;
+    return <Post img={post.img} alt={post.alt} post={post.post} like={post.like} id={post.id} key={post.id}/>;
   });
 
   let currentText = React.createRef();

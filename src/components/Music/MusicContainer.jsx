@@ -1,27 +1,19 @@
-import React from 'react';
+import { connect } from 'react-redux';
 import { addMusicActionCreator, updateNewMusicActionCreator } from '../../Redux/Music-reducer';
-import StoreContext from '../../storeContext';
 import Music from './Music';
 
-export default function MusicContainer() {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        const state = store.getState();
-        const onClickBtn = () => {
-          store.dispatch(addMusicActionCreator());
-        };
-        const onCheingeText = (text) => {
-          store.dispatch(updateNewMusicActionCreator(text));
-        };
-        return (
-          <Music
-            onClickBtn={onClickBtn}
-            onCheingeText={onCheingeText}
-            playList={state.musicPage.playList}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-}
+const mapStateToProps = (state) => {
+  return {
+    playList: state.musicPage.playList,
+    newArtistText: state.musicPage.newArtistText,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickBtn: () => dispatch(addMusicActionCreator()),
+    onCheingeText: (text) => dispatch(updateNewMusicActionCreator(text)),
+  };
+};
+const MusicContainer = connect(mapStateToProps, mapDispatchToProps)(Music);
+export default MusicContainer;

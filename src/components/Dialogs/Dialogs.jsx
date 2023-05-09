@@ -7,8 +7,12 @@ export default function Dialogs(props) {
   const messages = props.messages;
   const dialogs = props.dialogs;
 
-  const messageList = messages.map((message) => <Message message={message.message} />);
-  const DialogsList = dialogs.map((dialog) => <Dialog id={dialog.id} name={dialog.name} />);
+  const messageList = messages.map((message) => (
+    <Message message={message.message} id={message.id} key={message.id} />
+  ));
+  const DialogsList = dialogs.map((dialog) => (
+    <Dialog id={dialog.id} key={dialog.id} name={dialog.name} />
+  ));
 
   const addMessage = () => {
     props.addMessage();

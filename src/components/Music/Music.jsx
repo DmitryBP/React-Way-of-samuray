@@ -30,6 +30,7 @@ export default function Music(props) {
         <textarea
           className={s.textarea}
           onChange={onCheingeText}
+          value={props.newArtistText}
         ></textarea>
         <button onClick={onClickBtn} className={s.btn}>
           Add song
