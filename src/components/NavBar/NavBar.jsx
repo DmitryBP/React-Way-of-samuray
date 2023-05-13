@@ -18,6 +18,11 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/users" className={aStyle}>
+            Users
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/music" className={aStyle}>
             Music
           </NavLink>

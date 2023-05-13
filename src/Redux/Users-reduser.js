@@ -1,13 +1,8 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS'
+const SET_USERS = 'SET_USERS';
 
-const initialState = {
-  users: [
-  ],
-
-  new___Text: '',
-};
+const initialState = { users: [] };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -31,13 +26,11 @@ const usersReducer = (state = initialState, action) => {
           return u;
         }),
       };
-      case SET_USERS:
-        console.log(state);
-        return {
-          ...state,
-          // users: [ ...action.users]
-          users: [...state.users, ...action.users]
-        };
+    case SET_USERS:
+      return {
+        ...state,
+        users: [...state.users, ...action.users],
+      };
     default:
       return state;
   }
