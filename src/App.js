@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 import NewsContainer from './components/News/NewsContainer';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
+import UsersContainer from './components/Users/usersContainer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/news" element={<NewsContainer />} />
           <Route path="/music" element={<MusicContainer />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/users" element={<UsersContainer/>} />
         </Routes>
       </div>
     </div>
