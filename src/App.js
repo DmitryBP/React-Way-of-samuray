@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import MusicContainer from './components/Music/MusicContainer';
 import NavBar from './components/NavBar/NavBar';
 import NewsContainer from './components/News/NewsContainer';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/usersContainer';
 
@@ -17,7 +17,7 @@ function App() {
       <NavBar />
       <div className="appWrapperContent">
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<ProfileContainer />} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/news" element={<NewsContainer />} />
           <Route path="/music" element={<MusicContainer />} />

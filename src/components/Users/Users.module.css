@@ -3,3 +3,31 @@
   border-radius: 50%;
   
 }
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  
+}
+
+.carentPage {
+
+border: 1px solid rgb(130, 130, 130);
+background-color: #dbd9d9;
+
+color: red;
+font-weight: 900;
+}
+
+.pageNumber {
+  text-align: center;
+  line-height: 15px;
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+  margin: 3px;
+  border: 1px solid rgb(130, 130, 130);
+  background-color: #dbd9d9;
+
+  }
