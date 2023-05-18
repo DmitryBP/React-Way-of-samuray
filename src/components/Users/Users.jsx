@@ -14,7 +14,7 @@ export default function Users(props) {
       <div className={s.pagination}>
         {pages.map((p) => {
           return p === props.currentPage ? (
-            <div className={`${s.carentPage} ${s.pageNumber}`}>{p}</div>
+            <div key={p} className={`${s.carentPage} ${s.pageNumber}`}>{p}</div>
           ) : (
             <div onClick={() => props.onPageRender(p)} className={s.pageNumber}>
               {p}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Preloader from '../Preloader/Preloader';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import s from './Profile.module.css';
+import ProfileInfo from './ProfileInfo';
 
 export default function Profile(props) {
   if (!props.profile) {
@@ -9,12 +9,8 @@ export default function Profile(props) {
   }
   return (
     <div>
-      <div className={s.mainBaner} />
-      <div className={s.content}>
-        <img src={props.profile.photos.large} alt="photo1" />
-        <div>ava + discrription</div>
-        <MyPostsContainer />
-      </div>
+      <ProfileInfo profile={props.profile} />
+      <MyPostsContainer />
     </div>
   );
 }
