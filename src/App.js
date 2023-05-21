@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import MusicContainer from './components/Music/MusicContainer';
 import NavBar from './components/NavBar/NavBar';
 import NewsContainer from './components/News/NewsContainer';
@@ -13,7 +14,7 @@ import UsersContainer from './components/Users/usersContainer';
 function App() {
   return (
     <div className="appWrapper">
-      <Header />
+      <HeaderContainer />
       <NavBar />
       <div className="appWrapperContent">
         <Routes>

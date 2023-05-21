@@ -1,4 +1,5 @@
 import { combineReducers, legacy_createStore as createStore} from "redux"
+import authReduser from "./Auth-reduser";
 import dialogReducer from './Dialog-reduser';
 import musicReducer from './Music-reducer';
 import newsReducer from './News-reducer';
@@ -13,8 +14,12 @@ let redusers = combineReducers({
   musicPage: musicReducer,
   newsPage: newsReducer,
   usersPage: usersReducer,
+  auth: authReduser, // Добавили для того что бы в store появился раздел auth который будет содержать методы редьюсера authReduser
 });
 
 let store = createStore(redusers);
+
+window.store = store
+
 
 export default store;

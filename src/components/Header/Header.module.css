@@ -1,6 +1,9 @@
 .header {
+  border: 1px solid red;
   grid-area: h;
   display: flex;
+  position: relative;
+  
 }
 
 .logo {
@@ -14,4 +17,12 @@
   margin:auto;
   width: 60px;
   padding-bottom: 10px;
+}
+
+.login {
+position: absolute;
+border: 1px solid red;
+
+right:10px;
+top:5px;
 }
