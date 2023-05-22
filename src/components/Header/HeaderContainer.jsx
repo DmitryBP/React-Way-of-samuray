@@ -1,20 +1,17 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getAuthStatus } from '../../api/api';
 import { chaingeState } from '../../Redux/Auth-reduser';
 import Header from './Header';
-
 export function HeaderContainer(props) {
   //запрос
   useEffect(() => {
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true })
-      .then((respons) => {
-        if (respons.data.resultCode === 0) {
-          let {login} = respons.data.data
-          props.chaingeState(login);
-        }
-      });
+    getAuthStatus().then((data) => {
+      if (data.resultCode === 0) {
+        let { login } = data.data;
+        props.chaingeState(login);
+      }
+    });
   });
   return <Header {...props} />;
 }

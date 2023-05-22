@@ -3,26 +3,23 @@
   grid-area: h;
   display: flex;
   position: relative;
-  
 }
 
 .logo {
   display: flex;
   flex-direction: column;
   margin: auto;
-  
 }
 
 .logo img {
-  margin:auto;
+  margin: auto;
   width: 60px;
   padding-bottom: 10px;
 }
 
 .login {
-position: absolute;
-border: 1px solid red;
-
-right:10px;
-top:5px;
+  position: absolute;
+  border: 1px solid red;
+  right: 10px;
+  top: 5px;
 }

@@ -1,13 +1,13 @@
 .MyPosts {
   position: relative;
+  margin: 15px 0px;
+}
+
+.postsWrapper {
+  margin: 20px 0px;
 }
 
 .textArea {
   display: block;
-  margin: 10px 70px;
-
-}
-
-.btn {
-  margin: 10px 70px;
+  margin: 25px 0;
 }

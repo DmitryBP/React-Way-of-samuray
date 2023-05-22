@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Header from './components/Header/Header';
 import HeaderContainer from './components/Header/HeaderContainer';
 import MusicContainer from './components/Music/MusicContainer';
 import NavBar from './components/NavBar/NavBar';

@@ -7,12 +7,11 @@ import {
   unFollow,
 } from '../../Redux/Users-reduser';
 import React, { Component } from 'react';
-import axios from 'axios';
 import Users from './Users';
 import { connect } from 'react-redux';
 import Preloader from '../Preloader/Preloader';
+import { getUsers } from '../../api/api';
 // import UsersAPIContainer from './UsersAPIContainer';
-
 const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
@@ -26,30 +25,20 @@ const mapStateToProps = (state) => {
 class UsersContainer extends Component {
   componentDidMount() {
     this.props.togleFeacheng(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((respons) => {
-        this.props.setUsers(respons.data.items);
-        // this.props.setTotalUsersCount(respons.data.totalCount);
-        setTimeout(() => {
-          this.props.togleFeacheng(false);
-        }, 200);
-      });
+    getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+      this.props.setUsers(data.items);
+      // this.props.setTotalUsersCount(data.totalCount);
+      this.props.togleFeacheng(false);
+    });
   }
   onPageRender = (p) => {
     this.props.setCurrentPage(p);
     this.props.togleFeacheng(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`
-      )
-      .then((respons) => {
-        this.props.setUsers(respons.data.items);
-        setTimeout(() => {
-          this.props.togleFeacheng(false);
-        }, 500);
+    getUsers(p, this.props.pageSize)
+      .then((data) => {
+        this.props.setUsers(data.items);
+
+        this.props.togleFeacheng(false);
       });
   };
   render() {

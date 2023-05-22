@@ -1,6 +1,7 @@
 .content {
-  padding: 10px;
-  margin-top: 10px;   
+  display: flex;  
+  margin: 20px 0;
+
 }
 .content::before {
   border-radius: 5px;
@@ -13,4 +14,18 @@
   background-image: url('https://dev.tecci.fi/tecci_2/wp-content/uploads/2020/09/angular-react-vue-web-development.jpg');
   background-position: center;
   background-size: cover;
+}
+
+.profileImg {
+  border-radius: 5%;
+  width: 100px;
+  height: 100px;
+}
+
+.userDiscriptionWrapper {
+  display: block;
+}
+.userDiscriptionWrapper div {
+padding: 0 0 10px 20px;
+
 }

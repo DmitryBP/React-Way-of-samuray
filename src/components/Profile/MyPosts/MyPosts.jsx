@@ -33,7 +33,7 @@ export default function MyPosts(props) {
           Add Post
         </button>
       </div>
-      <div>{PostList}</div>
+      <div className={s.postsWrapper}>{PostList}</div>
     </div>
   );
 }

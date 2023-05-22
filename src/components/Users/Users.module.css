@@ -1,23 +1,20 @@
 .photo {
   width: 100px;
   border-radius: 50%;
-  
 }
 
 .pagination {
   display: flex;
   flex-wrap: wrap;
   max-width: 800px;
-  
 }
 
 .carentPage {
+  border: 1px solid rgb(130, 130, 130);
+  background-color: #dbd9d9;
 
-border: 1px solid rgb(130, 130, 130);
-background-color: #dbd9d9;
-
-color: red;
-font-weight: 900;
+  color: red;
+  font-weight: 900;
 }
 
 .pageNumber {
@@ -29,5 +26,4 @@ font-weight: 900;
   margin: 3px;
   border: 1px solid rgb(130, 130, 130);
   background-color: #dbd9d9;
-
-  }
+}
