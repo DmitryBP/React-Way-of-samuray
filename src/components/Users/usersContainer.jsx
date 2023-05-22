@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import Preloader from '../Preloader/Preloader';
-import { getUsers } from '../../api/api';
+import { usersAPI } from '../../api/api';
 // import UsersAPIContainer from './UsersAPIContainer';
 const mapStateToProps = (state) => {
   return {
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
 class UsersContainer extends Component {
   componentDidMount() {
     this.props.togleFeacheng(true);
-    getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
       this.props.setUsers(data.items);
       // this.props.setTotalUsersCount(data.totalCount);
       this.props.togleFeacheng(false);
@@ -34,12 +34,11 @@ class UsersContainer extends Component {
   onPageRender = (p) => {
     this.props.setCurrentPage(p);
     this.props.togleFeacheng(true);
-    getUsers(p, this.props.pageSize)
-      .then((data) => {
-        this.props.setUsers(data.items);
+    usersAPI.getUsers(p, this.props.pageSize).then((data) => {
+      this.props.setUsers(data.items);
 
-        this.props.togleFeacheng(false);
-      });
+      this.props.togleFeacheng(false);
+    });
   };
   render() {
     return (

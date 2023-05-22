@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAuthStatus } from '../../api/api';
+import { authAPI } from '../../api/api';
 import { chaingeState } from '../../Redux/Auth-reduser';
 import Header from './Header';
 export function HeaderContainer(props) {
   //запрос
   useEffect(() => {
-    getAuthStatus().then((data) => {
+    authAPI.getAuthStatus().then((data) => {
       if (data.resultCode === 0) {
         let { login } = data.data;
         props.chaingeState(login);
