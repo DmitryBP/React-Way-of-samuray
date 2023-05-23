@@ -3,6 +3,7 @@ import {
   setCurrentPage,
   // setTotalUserCount,
   setUsers,
+  togleActiveBtn,
   togleFeacheng,
   unFollow,
 } from '../../Redux/Users-reduser';
@@ -12,6 +13,7 @@ import { connect } from 'react-redux';
 import Preloader from '../Preloader/Preloader';
 import { usersAPI } from '../../api/api';
 // import UsersAPIContainer from './UsersAPIContainer';
+
 const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
@@ -19,6 +21,7 @@ const mapStateToProps = (state) => {
     totalUserCount: state.usersPage.totalUserCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    isBtnActive: state.usersPage.isBtnActive,
   };
 };
 
@@ -41,7 +44,9 @@ class UsersContainer extends Component {
     });
   };
   render() {
+    // debugger
     return (
+
       <>
         <Preloader isFetching={this.props.isFetching} />
         <Users
@@ -52,17 +57,20 @@ class UsersContainer extends Component {
           users={this.props.users}
           follow={this.props.follow}
           unFollow={this.props.unFollow}
+          togleActiveBtn={this.props.togleActiveBtn}
+          isBtnActive={this.props.isBtnActive}
         />
       </>
     );
   }
 }
-
 export default connect(mapStateToProps, {
   follow,
   unFollow,
   setUsers,
   setCurrentPage,
   togleFeacheng,
+  togleActiveBtn,
+  
   // setTotalUsersCount: setTotalUserCount,
 })(UsersContainer);

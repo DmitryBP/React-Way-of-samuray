@@ -43,28 +43,33 @@ export default function Users(props) {
             <div>
               {/* Кнопка Followed / Unfollowed */}
               {u.followed ? (
-                <button
-                  onClick={() => {
+                <button disabled={props.isBtnActive.some(id => id === u.id)}
+                onClick={() => {
+                  props.togleActiveBtn(true, u.id)
                     followAPI.unfollowRequestedUser(u.id).then((respons) => {
                       if (respons.data.resultCode === 0) {
                         props.unFollow(u.id);
+                        props.togleActiveBtn(false, u.id)
                       }
                     });
                   }}
                 >
-                  Follow
+                  Подписаться
                 </button>
               ) : (
-                <button
-                  onClick={() => {
+                <button disabled={props.isBtnActive.some(id => id === u.id)}
+                onClick={() => {
+                    // debugger
+                    props.togleActiveBtn(true, u.id)
                     followAPI.followRequestedUser(u.id).then((respons) => {
                       if (respons.data.resultCode === 0) {
                         props.follow(u.id);
+                        props.togleActiveBtn(false, u.id)
                       }
                     });
                   }}
                 >
-                  Unfollow
+                  Отписаться
                 </button>
               )}
             </div>
