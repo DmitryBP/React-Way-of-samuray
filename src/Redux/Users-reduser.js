@@ -1,3 +1,5 @@
+import { followAPI, usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -69,12 +71,48 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unFollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccsess = (userId) => ({ type: FOLLOW, userId });
+export const unFollowSuccsess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const togleFeacheng = (toggle) => ({ type: TOGGLE_FEACHENG, toggle });
 export const togleActiveBtn = (toggle, userId) => ({ type: TOGGLE_ACTIVE_BTN, toggle, userId });
 // export const setTotalUserCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT, totalUsersCount });
+
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(togleFeacheng(true));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(setCurrentPage(currentPage));
+      dispatch(togleFeacheng(false));
+      dispatch(setUsers(data.items));
+      // despatch.setTotalUsersCount(data.totalCount);
+    });
+  };
+};
+
+export const follow = (userId) => {
+  return (dispatch) => {
+    dispatch(togleActiveBtn(true, userId));
+    followAPI.unfollowRequestedUser(userId).then((respons) => {
+      if (respons.data.resultCode === 0) {
+        dispatch(unFollowSuccsess(userId));
+        dispatch(togleActiveBtn(false, userId));
+      }
+    });
+  };
+};
+
+export const unFollow = (userId) => {
+  return (dispatch) => {
+    dispatch(togleActiveBtn(true, userId));
+    followAPI.followRequestedUser(userId).then((respons) => {
+      if (respons.data.resultCode === 0) {
+        dispatch(followSuccsess(userId));
+        dispatch(togleActiveBtn(false, userId));
+      }
+    });
+  };
+};
 
 export default usersReducer;

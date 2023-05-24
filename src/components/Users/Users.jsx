@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { followAPI } from '../../api/api';
 import s from './Users.module.css';
 
 export default function Users(props) {
@@ -43,31 +42,16 @@ export default function Users(props) {
             <div>
               {/* Кнопка Followed / Unfollowed */}
               {u.followed ? (
-                <button disabled={props.isBtnActive.some(id => id === u.id)}
-                onClick={() => {
-                  props.togleActiveBtn(true, u.id)
-                    followAPI.unfollowRequestedUser(u.id).then((respons) => {
-                      if (respons.data.resultCode === 0) {
-                        props.unFollow(u.id);
-                        props.togleActiveBtn(false, u.id)
-                      }
-                    });
-                  }}
+                <button
+                  disabled={props.isBtnActive.some((id) => id === u.id)}
+                  onClick={() => props.follow(u.id)}
                 >
                   Подписаться
                 </button>
               ) : (
-                <button disabled={props.isBtnActive.some(id => id === u.id)}
-                onClick={() => {
-                    // debugger
-                    props.togleActiveBtn(true, u.id)
-                    followAPI.followRequestedUser(u.id).then((respons) => {
-                      if (respons.data.resultCode === 0) {
-                        props.follow(u.id);
-                        props.togleActiveBtn(false, u.id)
-                      }
-                    });
-                  }}
+                <button
+                  disabled={props.isBtnActive.some((id) => id === u.id)}
+                  onClick={() => props.unFollow(u.id)}
                 >
                   Отписаться
                 </button>

@@ -1,17 +1,14 @@
 import {
   follow,
-  setCurrentPage,
+  getUsers,
   // setTotalUserCount,
-  setUsers,
   togleActiveBtn,
-  togleFeacheng,
   unFollow,
 } from '../../Redux/Users-reduser';
 import React, { Component } from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import Preloader from '../Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 // import UsersAPIContainer from './UsersAPIContainer';
 
 const mapStateToProps = (state) => {
@@ -24,29 +21,15 @@ const mapStateToProps = (state) => {
     isBtnActive: state.usersPage.isBtnActive,
   };
 };
-
 class UsersContainer extends Component {
   componentDidMount() {
-    this.props.togleFeacheng(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-      this.props.setUsers(data.items);
-      // this.props.setTotalUsersCount(data.totalCount);
-      this.props.togleFeacheng(false);
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
   onPageRender = (p) => {
-    this.props.setCurrentPage(p);
-    this.props.togleFeacheng(true);
-    usersAPI.getUsers(p, this.props.pageSize).then((data) => {
-      this.props.setUsers(data.items);
-
-      this.props.togleFeacheng(false);
-    });
+    this.props.getUsers(p, this.props.pageSize);
   };
   render() {
-    // debugger
     return (
-
       <>
         <Preloader isFetching={this.props.isFetching} />
         <Users
@@ -57,7 +40,6 @@ class UsersContainer extends Component {
           users={this.props.users}
           follow={this.props.follow}
           unFollow={this.props.unFollow}
-          togleActiveBtn={this.props.togleActiveBtn}
           isBtnActive={this.props.isBtnActive}
         />
       </>
@@ -67,10 +49,7 @@ class UsersContainer extends Component {
 export default connect(mapStateToProps, {
   follow,
   unFollow,
-  setUsers,
-  setCurrentPage,
-  togleFeacheng,
   togleActiveBtn,
-  
+  getUsers,
   // setTotalUsersCount: setTotalUserCount,
 })(UsersContainer);
