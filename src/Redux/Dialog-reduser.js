@@ -68,8 +68,8 @@ const dialogReducer = (state = initialState, action) => {
       return state;
   }
 };
-export let addMessageActionCreator = () => ({ type: 'ADD-MESSAGE' });
-export let updateNewMessageTextActionCreator = (text) => ({
+export let addMessage = () => ({ type: 'ADD-MESSAGE' });
+export let updateNewMessageText = (text) => ({
   type: 'UPDATE-NEW-MESSAGE-TEXT',
   cheingedText: text,
 });

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../Redux/Profile-reducer';
+import { getProfile, getStatus, updateStatus } from '../../Redux/Profile-reducer';
 import { useParams } from 'react-router-dom';
-import { profileAPI } from '../../api/api';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
+import { compose } from 'redux';
 
 function ProfileContainer(props) {
   let { userId } = useParams();
@@ -11,18 +12,22 @@ function ProfileContainer(props) {
     userId = 2;
   }
   useEffect(() => {
-    profileAPI.getProfile(userId).then((respons) => {
-      props.setUserProfile(respons.data);
-    });
+    props.getProfile(userId);
+    props.getStatus(userId)
   }, [userId]);
   return (
     <div>
-      <Profile {...props} profile={props.profile} />
+      <Profile {...props} profile={props.profile} status = {props.status} updateStatus={props.updateStatus}/>
     </div>
   );
 }
+
 const mapStateToProps = (state) => ({
   profile: state.postPage.profile,
+  status: state.postPage.status,
 });
 
-export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);
+export default compose(
+  connect(mapStateToProps, { getProfile, getStatus, updateStatus }),
+  withAuthRedirect,
+)(ProfileContainer)

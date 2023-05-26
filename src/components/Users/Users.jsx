@@ -12,11 +12,11 @@ export default function Users(props) {
     <div>
       {/* Пагинация */}
       <div className={s.pagination}>
-        {pages.map((p) => {
+        {pages.map((p, i) => {
           return p === props.currentPage ? (
-            <div className={`${s.carentPage} ${s.pageNumber}`}>{p}</div>
+            <div key={i} className={`${s.carentPage} ${s.pageNumber}`}>{p}</div>
           ) : (
-            <div onClick={() => props.onPageRender(p)} className={s.pageNumber}>
+            <div key={i} onClick={() => props.onPageRender(p)} className={s.pageNumber}>
               {p}
             </div>
           );

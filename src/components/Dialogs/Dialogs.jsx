@@ -22,7 +22,7 @@ export default function Dialogs(props) {
     const text = e.target.value;
     props.updateNewMessageText(text);
   };
-
+    
   return (
     <div className={s.DialogsWrapper}>
       <div className={s.dialogs}>{DialogsList}</div>

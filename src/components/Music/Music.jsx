@@ -3,9 +3,10 @@ import s from './Music.module.css';
 import MusicItem from './MusikItem/MusicItem';
 
 export default function Music(props) {
-  const playList = props.playList.map((musicItem) => {
+  const playList = props.playList.map((musicItem, i) => {
     return (
       <MusicItem
+        key={i}
         albumCover={musicItem.albumCover}
         artist={musicItem.artist}
         song={musicItem.song}

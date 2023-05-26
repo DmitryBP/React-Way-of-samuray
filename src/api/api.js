@@ -14,15 +14,19 @@ export const usersAPI = {
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((respons) => respons.data);
   },
-  getProfile(userId) {
-    return instans.get(`profile/${userId}`);
-  },
 };
 
 export const profileAPI = {
   getProfile(userId) {
     return instans.get(`profile/${userId}`);
   },
+  getStatus(userId) {
+    return instans.get(`profile/status/${userId}`);
+  },
+  updateStatus(status) {
+    return instans.put(`profile/status`, {status: status});
+  },
+  
 };
 
 export const authAPI = {
