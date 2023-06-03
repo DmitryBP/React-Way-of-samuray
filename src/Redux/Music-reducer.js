@@ -1,5 +1,6 @@
 const ADD_MUSIC = 'ADD-MUSIC';
 const UPDATE_NEW_MUSIC_TEXT = 'UPDATE_NEW_MUSIC_TEXT';
+const UPDATE_TEG = 'UPDATE_TEG';
 
 const initialState = {
   playList: [
@@ -22,14 +23,17 @@ const initialState = {
     },
   ],
   newArtistText: '',
+  tag: 'tag',
 };
 
-export const addMusicActionCreator = () => ({ type: ADD_MUSIC });
+export const addMusic = () => ({ type: ADD_MUSIC });
 
-export const updateNewMusicActionCreator = (text) => ({
+export const updateNewMusic = (text) => ({
   type: UPDATE_NEW_MUSIC_TEXT,
   newArtistText: text,
 });
+
+export const upDateTag = (tag) => ({ type: UPDATE_TEG, tag });
 
 const musicReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -51,6 +55,12 @@ const musicReducer = (state = initialState, action) => {
       return {
         ...state,
         newArtistText: action.newArtistText,
+      };
+
+    case UPDATE_TEG:
+      return {
+        ...state,
+        tag: action.tag,
       };
 
     default:

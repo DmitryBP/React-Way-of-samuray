@@ -24,14 +24,19 @@ export const profileAPI = {
     return instans.get(`profile/status/${userId}`);
   },
   updateStatus(status) {
-    return instans.put(`profile/status`, {status: status});
+    return instans.put(`profile/status`, {status});
   },
-  
 };
 
 export const authAPI = {
   getAuthStatus() {
     return instans.get(`auth/me`).then((respons) => respons.data);
+  },
+  logIn(email, password, rememberMe=false) {
+    return instans.post(`auth/login`, {email, password, rememberMe});
+  },
+  logOut() {
+    return instans.delete(`auth/login`);
   },
 };
 

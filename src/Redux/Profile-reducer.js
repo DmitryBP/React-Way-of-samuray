@@ -5,7 +5,7 @@ const UP_DAATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
-let initialState = {
+const initialState = {
   posts: [
     {
       id: 1,
@@ -24,7 +24,7 @@ let initialState = {
   ],
   NewPostText: '',
   profile: null,
-  status: 'test',
+  status: '',
 };
 
 const profileReducer = (state = initialState, action) => {

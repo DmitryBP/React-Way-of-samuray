@@ -1,7 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 .appWrapper {
-  border: 1px solid red;
-
-  width: 1024px;
+  /* border: 1px solid red; */
+  width: 100%;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 10px;
   color: #585858;
@@ -17,4 +21,7 @@
 .appWrapperContent {
   grid-area: c;
   border-radius: 5px;
+  /* border: 1px solid red; */
+  margin: 10px
+  
 }

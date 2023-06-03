@@ -10,17 +10,19 @@ export default function Music(props) {
         albumCover={musicItem.albumCover}
         artist={musicItem.artist}
         song={musicItem.song}
+        tag={props.tag}
+        upDateTag={props.upDateTag}
       />
     );
   });
 
-  const onClickBtn = () => {
-    props.onClickBtn();
+  const addMusic = () => {
+    props.addMusic();
   };
 
-  const onCheingeText = (e) => {
+  const updateNewMusic = (e) => {
     const text = e.target.value;
-    props.onCheingeText(text);
+    props.updateNewMusic(text);
   };
   return (
     <div>
@@ -30,10 +32,10 @@ export default function Music(props) {
       <div>
         <textarea
           className={s.textarea}
-          onChange={onCheingeText}
+          onChange={updateNewMusic}
           value={props.newArtistText}
         ></textarea>
-        <button onClick={onClickBtn} className={s.btn}>
+        <button onClick={addMusic} className={s.btn}>
           Add song
         </button>
       </div>

@@ -17,11 +17,27 @@
 }
 
 .list li {
-  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  
+}
+
+.treckWrapperLeft {
   display: flex;
   align-items: center;
 }
 
-.list span {
+.tag{
+  background-color: #ff8ad8;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: smaller;
+  color: #fff;
+
+}
+
+.treckTitle {
   padding-left: 10px;
 }

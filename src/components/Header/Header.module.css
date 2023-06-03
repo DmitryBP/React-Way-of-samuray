@@ -1,5 +1,5 @@
 .header {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   grid-area: h;
   display: flex;
   position: relative;
@@ -19,7 +19,20 @@
 
 .login {
   position: absolute;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   right: 10px;
   top: 5px;
+}
+.loginWrapper {
+  display: flex;
+}
+.exitBtn {
+  background-image: url('https://cdn.icon-icons.com/icons2/2348/PNG/512/exit_icon_143020.png');
+  background-color: #fff;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+  background-size: contain;
+  background-position: center;
+  border: none;
 }

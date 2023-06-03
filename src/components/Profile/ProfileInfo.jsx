@@ -26,9 +26,9 @@ export default function ProfileInfo(props) {
             <div>Поиск работы: {props.profile.lookingForAJobDescription}</div>
           </div>
         </div>
-          <div className={s.status}>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-          </div>
+        <div className={s.status}>
+          <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+        </div>
       </div>
     );
   }
