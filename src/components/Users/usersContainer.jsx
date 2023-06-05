@@ -9,16 +9,17 @@ import React, { Component } from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import Preloader from '../Preloader/Preloader';
+import { getCurrentPage, getisBtnActive, getIsFetching, getPageSize, getTotalUserCount, requestUsers } from '../../Redux/users-selectors';
 // import UsersAPIContainer from './UsersAPIContainer';
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUserCount: state.usersPage.totalUserCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    isBtnActive: state.usersPage.isBtnActive,
+    users: requestUsers(state),
+    pageSize: getPageSize(state),
+    totalUserCount: getTotalUserCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isBtnActive: getisBtnActive(state),
   };
 };
 class UsersContainer extends Component {
