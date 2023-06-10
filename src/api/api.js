@@ -9,10 +9,9 @@ const instans = axios.create({
 });
 
 export const usersAPI = {
-  getUsers(currentPage, pageSize) {
-    return instans
-      .get(`users?page=${currentPage}&count=${pageSize}`)
-      .then((respons) => respons.data);
+  async getUsers(currentPage, pageSize) {
+    const respons = await instans.get(`users?page=${currentPage}&count=${pageSize}`);
+    return respons.data;
   },
 };
 
@@ -24,16 +23,18 @@ export const profileAPI = {
     return instans.get(`profile/status/${userId}`);
   },
   updateStatus(status) {
-    return instans.put(`profile/status`, {status});
+    return instans.put(`profile/status`, { status });
   },
 };
 
 export const authAPI = {
-  getAuthStatus() {
-    return instans.get(`auth/me`).then((respons) => respons.data);
+  async getAuthStatus() {
+    const respons = await instans.get(`auth/me`);
+    return respons.data;
   },
-  logIn(email, password, rememberMe=false) {
-    return instans.post(`auth/login`, {email, password, rememberMe});
+
+  logIn(email, password, rememberMe = false) {
+    return instans.post(`auth/login`, { email, password, rememberMe });
   },
   logOut() {
     return instans.delete(`auth/login`);

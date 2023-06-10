@@ -24,34 +24,37 @@ export default function authReduser(state = initialState, action) {
   }
 }
 
-export const chaingeState = (id, email, login, isAuth) => ({ type: CHANGE_STATE, id, email, login, isAuth});
+export const chaingeState = (id, email, login, isAuth) => ({
+  type: CHANGE_STATE,
+  id,
+  email,
+  login,
+  isAuth,
+});
 
 export const getAuthStatus = () => {
-  return (dispatch) => {
-    authAPI.getAuthStatus().then((data) => {
-      if (data.resultCode === 0) {
-        let { id, email, login } = data.data;
-        dispatch(chaingeState(id, email, login, true));
-      }
-    });
+  return async (dispatch) => {
+    const response = await authAPI.getAuthStatus();
+    if (response.resultCode === 0) {
+      let { id, email, login } = response.data;
+      dispatch(chaingeState(id, email, login, true));
+    }
   };
 };
 export const logIn = (email, password, rememberMe) => {
-  return (dispatch) => {
-    authAPI.logIn(email, password, rememberMe).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(getAuthStatus());
-      }
-    });
+  return async (dispatch) => {
+    const response = await authAPI.logIn(email, password, rememberMe);
+    if (response.data.resultCode === 0) {
+      dispatch(getAuthStatus());
+    }
   };
 };
 export const logOut = () => {
-  return (dispatch) => {
-    authAPI.logOut().then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(chaingeState(null, null, null, false))
-        return <Navigate to={'/music'}/>
-      }
-    });
+  return async (dispatch) => {
+    const response = await authAPI.logOut();
+    if (response.data.resultCode === 0) {
+      dispatch(chaingeState(null, null, null, false));
+      return <Navigate to={'/music'} />;
+    }
   };
 };

@@ -79,39 +79,56 @@ export const togleFeacheng = (toggle) => ({ type: TOGGLE_FEACHENG, toggle });
 export const togleActiveBtn = (toggle, userId) => ({ type: TOGGLE_ACTIVE_BTN, toggle, userId });
 // export const setTotalUserCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT, totalUsersCount });
 
+////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// Пример замены .then на async / await ///////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Было
+// export const getUsers = (currentPage, pageSize) => {
+//   return (dispatch) => {
+//     dispatch(togleFeacheng(true));
+//     usersAPI.getUsers(currentPage, pageSize).then((data) => {
+//       dispatch(setCurrentPage(currentPage));
+//       dispatch(togleFeacheng(false));
+//       dispatch(setUsers(data.items));
+//       // despatch.setTotalUsersCount(data.totalCount);
+//     });
+//   };
+// };
+
+// Стало
 export const getUsers = (currentPage, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(togleFeacheng(true));
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
-      dispatch(setCurrentPage(currentPage));
-      dispatch(togleFeacheng(false));
-      dispatch(setUsers(data.items));
-      // despatch.setTotalUsersCount(data.totalCount);
-    });
+    const response = await usersAPI.getUsers(currentPage, pageSize);
+    dispatch(setCurrentPage(currentPage));
+    dispatch(togleFeacheng(false));
+    dispatch(setUsers(response.items));
+    // despatch.setTotalUsersCount(data.totalCount);
   };
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////
+
 export const follow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(togleActiveBtn(true, userId));
-    followAPI.unfollowRequestedUser(userId).then((respons) => {
-      if (respons.data.resultCode === 0) {
-        dispatch(unFollowSuccsess(userId));
-        dispatch(togleActiveBtn(false, userId));
-      }
-    });
+    const response = await followAPI.unfollowRequestedUser(userId);
+    if (response.data.resultCode === 0) {
+      dispatch(unFollowSuccsess(userId));
+      dispatch(togleActiveBtn(false, userId));
+    }
   };
 };
 
 export const unFollow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(togleActiveBtn(true, userId));
-    followAPI.followRequestedUser(userId).then((respons) => {
-      if (respons.data.resultCode === 0) {
-        dispatch(followSuccsess(userId));
-        dispatch(togleActiveBtn(false, userId));
-      }
-    });
+    const response = await followAPI.followRequestedUser(userId);
+    if (response.data.resultCode === 0) {
+      dispatch(followSuccsess(userId));
+      dispatch(togleActiveBtn(false, userId));
+    }
   };
 };
 

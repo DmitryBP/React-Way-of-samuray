@@ -66,27 +66,25 @@ export const upDateNewPostTextactionCriater = (text) => ({
   type: UP_DAATE_NEW_POST_TEXT,
   NewPostText: text,
 });
+
 export const getProfile = (userId) => {
-  return (dispatch) => {
-    profileAPI.getProfile(userId).then((respons) => {
-      dispatch(setUserProfile(respons.data));
-    });
+  return async (dispatch) => {
+    const response = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(response.data));
   };
 };
 export const getStatus = (userId) => {
-  return (dispatch) => {
-    profileAPI.getStatus(userId).then((respons) => {
-      dispatch(setStatus(respons.data));
-    });
+  return async (dispatch) => {
+    const response = await profileAPI.getStatus(userId);
+    dispatch(setStatus(response.data));
   };
 };
 export const updateStatus = (status) => {
-  return (dispatch) => {
-    profileAPI.updateStatus(status).then((respons) => {
-      if(respons.data.resultCode === 0){
-        dispatch(setStatus(status));
-      }
-    });
+  return async (dispatch) => {
+    const response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+      dispatch(setStatus(status));
+    }
   };
 };
 export default profileReducer;
